@@ -29,7 +29,11 @@ export default {
     version: String,
     types: [String, Array],
     addressFields: Object,
-    selectOnTab: true
+    selectOnTab: true,
+    language: {
+      type: String,
+      default: 'en_US',
+    },
   },
   data () {
     return {
@@ -68,7 +72,8 @@ export default {
     } else {
       loadModulePromise = loadModulePromise || loadModule({
         key: this.apiKey,
-        v: this.version
+        v: this.version,
+        language: this.language,
       })
     }
     this.parsedAddressFields = Object.assign({
